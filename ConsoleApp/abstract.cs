@@ -5,7 +5,7 @@ abstract class Customer
     public abstract void Print();
     public void GetData()
     {
-        Console.WriteLine("GetData Method");
+        Console.WriteLine("GetData Method from Base class - Customer");
     }
 }
 
@@ -14,7 +14,7 @@ class Program: Customer
 {
     public override void Print() 
     {
-        Console.WriteLine("Abstract Print Method");
+        Console.WriteLine("Overridden Print Method");
     }
 
     public static void Main()
@@ -32,6 +32,7 @@ class Program: Customer
 
         C.Print();
         C.GetData();
+        Console.ReadLine();
 
     }
 }

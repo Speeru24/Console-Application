@@ -1,57 +1,39 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
-class Program
-{
-    static void Main(string[] args)
-    {
-        callMethod();
+public class AsyncAwait {
+    public static void Main (string[] args) {
+        Console.WriteLine ("Welcome to Async Await program");
 
-        Customer cust = new Customer("Shishir");
-        Console.ReadKey();
+        Task task1 =  PrintNumbersAsync();
+        Task t2 = SendEmailAsync();
+
+        Console.WriteLine ("Application Terminates");
+
+        Console.ReadLine ();
     }
 
-    public static async void callMethod()
-    {
-        Task<int> task = Method1();
-        Method2();
-        int count = await task;
-        Method3(count);
-    }
-
-    public static async Task<int> Method1()
-    {
-        int count = 0;
-        await Task.Run(() =>
-        {
-            for (int i = 0; i < 100; i++)
-            {
-                Console.WriteLine(" Method 1");
-                count += 1;
+    public static async Task PrintNumbersAsync() {
+        Console.WriteLine ("Printing Started");
+        Console.WriteLine ("----------------------------------");
+        await Task.Run (() => {
+            for (int i = 0; i < 100; i++) {
+                Console.WriteLine ("Printing Number: " + i);
+                Thread.Sleep (100);
             }
         });
-        return count;
+        Console.WriteLine ("Printing Ended");
     }
 
-
-    public static void Method2()
-    {
-        for (int i = 0; i < 25; i++)
-        {
-            Console.WriteLine(" Method 2");
-        }
-    }
-
-
-    public static void Method3(int count)
-    {
-        Console.WriteLine("Total count is " + count);
-    }
-}
-
-class Customer
-{
-    public Customer(string Str)
-    {
-        Console.WriteLine("Str: " + Str);
+    public static async Task SendEmailAsync() {
+        Console.WriteLine ("Sending Email Started");
+        Console.WriteLine ("----------------------------------");
+        await Task.Run (() => {
+            for (int i = 0; i < 100; i++) {
+                Console.WriteLine ("Sending Email: " + i);
+                Thread.Sleep (100);
+            }
+        });
+        Console.WriteLine ("Sending Email Ended");
     }
 }

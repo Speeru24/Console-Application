@@ -47,6 +47,10 @@ class ExceptionClass
         {
             Console.WriteLine("FormatException Handled" + ex.Message);
         }
+        catch(Exception Ex){
+            Console.WriteLine("Log from Exception class");
+        }
+        
 
         Console.ReadLine();
     }
